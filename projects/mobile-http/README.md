@@ -1,6 +1,8 @@
 # Mobile HTTP Module for Angular
 This module will help to switch between `Cordova` & `XHR`. For now this module is created to work with `@angular/http`.
 
+[![Build Status](https://travis-ci.org/som30ind/mobile-http.svg?branch=master)](https://travis-ci.org/som30ind/mobile-http)
+
 ## Usage
 Below variable need to switch to `true` / `false` to toggle use between `Cordova` & `XHR` usage.
 
