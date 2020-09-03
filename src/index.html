@@ -1,1 +1,25 @@
 <my-app>loading</my-app>
+<script>
+  var isMobile = false;
+var cordova = {
+  plugin: {
+    http: {
+      sendRequest: function(url, options, scb, ecb) {
+			  options.body = options.data;
+        fetch(url, options)
+          .then(resp => {
+            console.log('USING FETCH:', resp, options);
+			      return resp.json()
+              .then(data => {
+                scb({
+                  status: 200,
+				          headers: resp.headers,
+                  data
+                });
+              });
+          });
+      }
+    }
+  }
+}
+</script>
