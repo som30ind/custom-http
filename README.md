@@ -46,4 +46,3 @@ For Cordova interaction,
 
 ## [License](LICENSE.md)
 Copyright (c) 2020 Somnath Sinha
-The Universal Permissive License (UPL), Version 1.0
