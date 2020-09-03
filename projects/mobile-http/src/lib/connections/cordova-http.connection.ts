@@ -8,17 +8,17 @@ import {
   ReadyState,
   RequestMethod,
   ResponseContentType
-} from "@angular/http";
-import { Observable, throwError, Observer } from "rxjs";
-import { flatMap, catchError, map } from "rxjs/operators";
-import { CordovaHttpClient } from "./cordova-http-client.service";
+} from '@angular/http';
+import { Observable, throwError, Observer } from 'rxjs';
+import { flatMap, catchError, map } from 'rxjs/operators';
+import { CordovaHttpClient } from '../services/cordova-http-client.service';
 import {
   CordovaHttpClientErrorResponse,
   CordovaHttpClientOptions,
   KeyValuePair,
   ContentType
-} from "./types";
-import { isSuccess } from "./utils";
+} from '../types';
+import { isSuccess } from '../utils';
 
 const XSSI_PREFIX = /^\)\]\}',?\n/;
 
@@ -43,7 +43,7 @@ export class CordovaHttpConnection implements Connection {
           body: resp.error,
           type: ResponseType.Error,
           status: resp.status | 0,
-          statusText: "Error"
+          statusText: 'Error'
         });
         if (baseResponseOptions != null) {
           responseOptions = baseResponseOptions.merge(responseOptions);
@@ -64,8 +64,8 @@ export class CordovaHttpConnection implements Connection {
           body = resp.data;
 
           // Implicitly strip a potential XSSI prefix.
-          if (typeof body === "string") {
-            body = body.replace(XSSI_PREFIX, "");
+          if (typeof body === 'string') {
+            body = body.replace(XSSI_PREFIX, '');
           }
         }
 
@@ -79,7 +79,7 @@ export class CordovaHttpConnection implements Connection {
         const headers: Headers = new Headers(resp.headers);
         // IE 9 does not provide the way to get URL of response
         const url = resp.url || req.url;
-        const statusText: string = "OK";
+        const statusText: string = 'OK';
 
         let responseOptions = new ResponseOptions({
           body,
@@ -116,34 +116,34 @@ export class CordovaHttpConnection implements Connection {
       if (req.headers == null) {
         req.headers = new Headers();
       }
-      if (!req.headers.has("Accept")) {
-        req.headers.append("Accept", "application/json, text/plain, */*");
+      if (!req.headers.has('Accept')) {
+        req.headers.append('Accept', 'application/json, text/plain, */*');
       }
       req.headers.forEach(
-        (values, name) => (options.headers[name!] = values.join(","))
+        (values, name) => (options.headers[name!] = values.join(','))
       );
 
       // Select the correct buffer type to store the response
       if (req.responseType != null && options.responseType != null) {
         switch (req.responseType) {
           case ResponseContentType.ArrayBuffer:
-            options.responseType = "arraybuffer";
+            options.responseType = 'arraybuffer';
             break;
 
           case ResponseContentType.Json:
-            options.responseType = "json";
+            options.responseType = 'json';
             break;
 
           case ResponseContentType.Text:
-            options.responseType = "text";
+            options.responseType = 'text';
             break;
 
           case ResponseContentType.Blob:
-            options.responseType = "blob";
+            options.responseType = 'blob';
             break;
 
           default:
-            throw new Error("The selected responseType is not supported");
+            throw new Error('The selected responseType is not supported');
         }
       }
 
@@ -156,7 +156,7 @@ export class CordovaHttpConnection implements Connection {
 
   setDetectedContentType(req: any, headers: KeyValuePair<string>) {
     // Skip if a custom Content-Type header is provided
-    if (req.headers != null && req.headers.get("Content-Type") != null) {
+    if (req.headers != null && req.headers.get('Content-Type') != null) {
       return;
     }
 
@@ -166,22 +166,22 @@ export class CordovaHttpConnection implements Connection {
         break;
 
       case ContentType.JSON:
-        headers["content-type"] = "application/json";
+        headers['content-type'] = 'application/json';
         break;
 
       case ContentType.FORM:
-        headers["content-type"] =
-          "application/x-www-form-urlencoded;charset=UTF-8";
+        headers['content-type'] =
+          'application/x-www-form-urlencoded;charset=UTF-8';
         break;
 
       case ContentType.TEXT:
-        headers["content-type"] = "text/plain";
+        headers['content-type'] = 'text/plain';
         break;
 
       case ContentType.BLOB:
         const blob = req.blob();
         if (blob.type) {
-          headers["content-type"] = blob.type;
+          headers['content-type'] = blob.type;
         }
         break;
     }

@@ -1,12 +1,12 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   ConnectionBackend,
   ResponseOptions,
   XSRFStrategy,
   Request
-} from "@angular/http";
-import { CordovaHttpClient } from "./cordova-http-client.service";
-import { CordovaHttpConnection } from "./cordova-http.connection";
+} from '@angular/http';
+import { CordovaHttpClient } from './cordova-http-client.service';
+import { CordovaHttpConnection } from '../connections/cordova-http.connection';
 
 @Injectable()
 export class CordovaHttpBackend implements ConnectionBackend {
@@ -14,7 +14,7 @@ export class CordovaHttpBackend implements ConnectionBackend {
     private cordovaHttpClient: CordovaHttpClient,
     private baseResponseOptions: ResponseOptions,
     private xsrfStrategy: XSRFStrategy
-  ) {}
+  ) { }
 
   createConnection(request: Request): CordovaHttpConnection {
     this.xsrfStrategy.configureRequest(request);

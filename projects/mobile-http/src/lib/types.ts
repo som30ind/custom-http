@@ -19,9 +19,9 @@ export interface CordovaHttpClientErrorResponse
 }
 
 export class CordovaHttpClientOptions {
-  method: string = "GET";
+  method: string = 'GET';
   headers: KeyValuePair<string> = {};
-  responseType: string = "json";
+  responseType: string = 'json';
   data: any;
 }
 

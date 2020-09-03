@@ -1,0 +1,34 @@
+{
+  "name": "@som30ind/mobile-http",
+  "version": "1.0.0",
+  "description": "This module will help to switch between Cordova & XHR. For now this module is created to work with @angular/http",
+  "author": {
+    "name": "Somnath Sinha",
+    "email": "som30ind@gmail.com",
+    "url": "https://github.com/som30ind/mobile-http"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/som30ind/mobile-http.git"
+  },
+  "bugs": {
+    "url": "https://github.com/som30ind/mobile-http/issues",
+    "email": "som30ind@gmail.com"
+  },
+  "homepage": "https://github.com/som30ind/mobile-http",
+  "keywords": [
+    "angular",
+    "typescript",
+    "javascript",
+    "module",
+    "http",
+    "cordova",
+    "httpclient"
+  ],
+  "peerDependencies": {
+    "@angular/common": ">= 2 <= 7",
+    "@angular/core": ">= 2 <= 7",
+    "@angular/http": ">= 2 <= 7"
+  },
+  "license": "MIT"
+}

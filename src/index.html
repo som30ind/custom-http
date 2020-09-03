@@ -1,25 +1,44 @@
-<my-app>loading</my-app>
-<script>
-  var isMobile = false;
-var cordova = {
-  plugin: {
-    http: {
-      sendRequest: function(url, options, scb, ecb) {
-			  options.body = options.data;
-        fetch(url, options)
-          .then(resp => {
-            console.log('USING FETCH:', resp, options);
-			      return resp.json()
-              .then(data => {
-                scb({
-                  status: 200,
-				          headers: resp.headers,
-                  data
-                });
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>MobileHttpClient</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    var isMobile = true;
+    var cordova = {
+      plugin: {
+        http: {
+          sendRequest: function (url, options, scb, ecb) {
+            options.body = options.data;
+            fetch(url, options)
+              .then(resp => {
+                console.log('USING FETCH:', resp, options);
+                return resp.json()
+                  .then(data => {
+                    scb({
+                      status: 200,
+                      headers: resp.headers,
+                      data
+                    });
+                  });
               });
-          });
+          }
+        }
       }
-    }
-  }
-}
-</script>
+    };
+    setTimeout(() => {
+      window.dispatchEvent(new CustomEvent("deviceReady"));
+    }, 1000);
+  </script>
+</head>
+
+<body>
+  <app-root></app-root>
+</body>
+
+</html>

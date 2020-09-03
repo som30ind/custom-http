@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
-import { Observable, Observer, fromEvent } from "rxjs";
-import { flatMap } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { Observable, Observer, fromEvent } from 'rxjs';
+import { flatMap } from 'rxjs/operators';
 import {
   CordovaHttpClientOptions,
   CordovaHttpClientSuccessResponse,
   Cordova
-} from "./types";
+} from '../types';
 
 declare const cordova: Cordova;
 
@@ -15,7 +15,7 @@ export class CordovaHttpClient {
     url: string,
     options: CordovaHttpClientOptions
   ): Observable<CordovaHttpClientSuccessResponse> {
-    return fromEvent(window, "deviceReady").pipe(
+    return fromEvent(window, 'deviceReady').pipe(
       flatMap(() => {
         return this.sendCordovaRequestAsObservable(url, options);
       })

@@ -1,4 +1,4 @@
-import { NgModule, Injectable } from "@angular/core";
+import { NgModule } from '@angular/core';
 import {
   Http,
   CookieXSRFStrategy,
@@ -9,9 +9,9 @@ import {
   ResponseOptions,
   BaseResponseOptions,
   XSRFStrategy
-} from "@angular/http";
-import { CordovaHttpClient } from "./cordova-http-client.service";
-import { CordovaHttpBackend } from "./cordova-http-backend.service";
+} from '@angular/http';
+import { CordovaHttpClient } from './services/cordova-http-client.service';
+import { CordovaHttpBackend } from './services/cordova-http-backend.service';
 
 declare const isMobile: boolean;
 
@@ -46,4 +46,4 @@ export function httpFactory(
     { provide: XSRFStrategy, useFactory: createDefaultCookieXSRFStrategy }
   ]
 })
-export class MobileHttpModule {}
+export class MobileHttpModule { }
