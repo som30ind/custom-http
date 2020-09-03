@@ -1,19 +1,15 @@
 import { NgModule, Injectable } from "@angular/core";
 import {
-  ConnectionBackend,
-  XSRFStrategy,
-  ResponseOptions,
-  Request,
-  CookieXSRFStrategy,
-  XHRBackend,
-  RequestOptions,
   Http,
+  CookieXSRFStrategy,
+  RequestOptions,
+  XHRBackend,
   BrowserXhr,
   BaseRequestOptions,
-  BaseResponseOptions
+  ResponseOptions,
+  BaseResponseOptions,
+  XSRFStrategy
 } from "@angular/http";
-import { CordovaHttpConnection } from "./cordova-http.connection";
-import { CordovaHttpClientOptions } from "./types";
 import { CordovaHttpClient } from "./cordova-http-client.service";
 import { CordovaHttpBackend } from "./cordova-http-backend.service";
 
@@ -41,7 +37,7 @@ export function httpFactory(
       useFactory: httpFactory,
       deps: [CordovaHttpBackend, RequestOptions, XHRBackend]
     },
-    CordovaHttpClientOptions,
+    CordovaHttpClient,
     BrowserXhr,
     { provide: RequestOptions, useClass: BaseRequestOptions },
     { provide: ResponseOptions, useClass: BaseResponseOptions },

@@ -154,7 +154,7 @@ export class CordovaHttpConnection implements Connection {
     });
   }
 
-  private setDetectedContentType(req: any, headers: KeyValuePair<string>) {
+  setDetectedContentType(req: any, headers: KeyValuePair<string>) {
     // Skip if a custom Content-Type header is provided
     if (req.headers != null && req.headers.get("Content-Type") != null) {
       return;
