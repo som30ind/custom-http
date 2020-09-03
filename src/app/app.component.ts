@@ -1,22 +1,20 @@
-import { Component, OnInit } from "@angular/core";
-import { Http } from "@angular/http";
-import { flatMap, map } from "rxjs/operators";
+import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
+import { map } from 'rxjs/operators';
 
 @Component({
-  selector: "my-app",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  name = "Angular";
+  title = 'mobile-http-client';
+
   data: any;
 
   constructor(private http: Http) {}
 
   ngOnInit() {
-    setTimeout(() => {
-      window.dispatchEvent(new CustomEvent("deviceReady"));
-    }, 1000);
     this.http
       .get("https://reqres.in/api/users", {
         params: {

@@ -1,14 +1,18 @@
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { AppComponent } from "./app.component";
-import { HelloComponent } from "./hello.component";
-import { MobileHttpModule } from "./mobile-http/mobile-http.module";
+import { AppComponent } from './app.component';
+import { MobileHttpModule } from '@som30ind/mobile-http';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, MobileHttpModule],
-  declarations: [AppComponent, HelloComponent],
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    MobileHttpModule
+  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
