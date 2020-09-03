@@ -46,4 +46,4 @@ export function httpFactory(
     { provide: XSRFStrategy, useFactory: createDefaultCookieXSRFStrategy }
   ]
 })
-export class CustomHttpModule {}
+export class MobileHttpModule {}

@@ -4,10 +4,10 @@ import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 import { HelloComponent } from "./hello.component";
-import { CustomHttpModule } from "./custom-http/custom-http.module";
+import { MobileHttpModule } from "./mobile-http/mobile-http.module";
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, CustomHttpModule],
+  imports: [BrowserModule, FormsModule, MobileHttpModule],
   declarations: [AppComponent, HelloComponent],
   bootstrap: [AppComponent]
 })
