@@ -15,7 +15,7 @@ export class CordovaHttpClient {
     url: string,
     options: CordovaHttpClientOptions
   ): Observable<CordovaHttpClientSuccessResponse> {
-    return fromEvent(window, 'deviceReady').pipe(
+    return fromEvent(document, 'deviceReady').pipe(
       flatMap(() => {
         return this.sendCordovaRequestAsObservable(url, options);
       })
