@@ -23,6 +23,8 @@ export class CordovaHttpClientOptions {
   headers: KeyValuePair<string> = {};
   responseType: string = 'json';
   data: any;
+  serializer: string;
+  contentType: string;
 }
 
 export interface CordovaHttpPlugin {
