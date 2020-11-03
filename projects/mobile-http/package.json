@@ -1,6 +1,6 @@
 {
   "name": "@som30ind/mobile-http",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This module will help to switch between Cordova & XHR. For now this module is created to work with @angular/http",
   "author": {
     "name": "Somnath Sinha",
