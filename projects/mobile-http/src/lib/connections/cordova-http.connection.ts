@@ -146,9 +146,50 @@ export class CordovaHttpConnection implements Connection {
             throw new Error('The selected responseType is not supported');
         }
       }
+      switch (this.request.detectContentType()) {
+        // ContentType.JSON
+        case ContentType.JSON:
+          options.serializer = 'json';
+          options.data = this.request.json();
+          options.contentType = 'application/json';
+          break;
 
-      options.data = this.request.getBody();
+        // ContentType.FORM
+        case ContentType.FORM:
+          options.serializer = 'urlencoded';
+          options.data = this.request.json();
+          break;
 
+        // ContentType.FORM_DATA
+        case ContentType.FORM_DATA:
+          options.serializer = 'multipart';
+          options.data = this.request.json();
+          break;
+
+        // ContentType.TEXT
+        case ContentType.TEXT:
+          options.serializer = 'utf8';
+          options.data = this.request.text();
+          break;
+
+        // ContentType.BLOB
+        case ContentType.BLOB:
+          options.serializer = 'raw';
+          options.data = this.request.blob();
+          break;
+
+        // ContentType.ARRAY_BUFFER
+        case ContentType.ARRAY_BUFFER:
+          options.serializer = 'raw';
+          options.data = this.request.arrayBuffer();
+          break;
+
+        // ContentType.FORM
+        default:
+          options.serializer = 'urlencoded';
+          options.data = this.request.json();
+          break;
+      }
       obs.next(options);
       obs.complete();
     });
