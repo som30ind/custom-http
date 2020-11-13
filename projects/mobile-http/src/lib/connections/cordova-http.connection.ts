@@ -151,13 +151,12 @@ export class CordovaHttpConnection implements Connection {
         case ContentType.JSON:
           options.serializer = 'json';
           options.data = this.request.json();
-          options.contentType = 'application/json';
           break;
 
         // ContentType.FORM
         case ContentType.FORM:
-          options.serializer = 'urlencoded';
-          options.data = this.request.json();
+          options.serializer = 'utf8';
+          options.data = this.request.text();
           break;
 
         // ContentType.FORM_DATA
